@@ -1,8 +1,9 @@
-const showEmail = document.getElementById('email');
+const emailList = document.getElementById('email');
 
-
-axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((resp) => {
-    console.log(resp.data.response);
-    showEmail.innerHTML = resp.data.response;
-})
-
+for (let i = 0; i < 10; i++) {
+    axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((resp) => {
+        const emailItem = document.createElement('div');
+        emailItem.textContent = resp.data.response;
+        emailList.appendChild(emailItem);
+    });
+}
